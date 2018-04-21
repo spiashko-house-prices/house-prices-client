@@ -1,0 +1,7 @@
+.NumericFeature-label {
+  display: inline-block;
+}
+
+.NumericFeature-input {
+  height: initial !important;
+}
