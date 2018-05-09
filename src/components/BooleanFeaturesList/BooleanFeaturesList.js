@@ -7,7 +7,7 @@ class BooleanFeaturesList extends Component {
   render() {
     const features = this.props.features;
     const listItems = features.map((feature) =>
-        <ListGroupItem  key={feature.featureName}>
+        <ListGroupItem key={feature.featureName}>
           <BooleanFeature feature={feature}/>
         </ListGroupItem>,
     );

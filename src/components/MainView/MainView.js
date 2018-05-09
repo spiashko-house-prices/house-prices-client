@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {
-  loadingModel,
-  loadModel,
-  loadPrediction,
-} from '../../actions/actions';
+import {loadingModel, loadModel, loadPrediction} from '../../actions/actions';
 import {Button, Col, Grid, Row, Tab, Tabs} from 'react-bootstrap';
 import './MainView.css';
 import {connect} from 'react-redux';

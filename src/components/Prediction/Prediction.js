@@ -6,13 +6,13 @@ import {Well} from 'react-bootstrap';
 class Prediction extends Component {
   render() {
     const prediction = this.props.prediction;
-    let inside = "";
+    let inside = '';
 
     if (prediction != null) {
-      inside = "Prediction: " + parseFloat(prediction.value).toFixed(2);
+      inside = 'Prediction: ' + parseFloat(prediction.value).toFixed(2);
     }
     else {
-      inside = "Please fill form and click get price";
+      inside = 'Please fill form and click get price';
     }
 
     return (

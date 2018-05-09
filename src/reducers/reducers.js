@@ -7,26 +7,25 @@ import {
   MODEL_LOADING,
 } from '../actions/actions';
 
-
 const amesDataset = {
-  backend: process.env.REACT_APP_AMES_BACKEND
+  backend: process.env.REACT_APP_AMES_BACKEND,
 };
 
 const kcDataset = {
-  backend: process.env.REACT_APP_KC_BACKEND
+  backend: process.env.REACT_APP_KC_BACKEND,
 };
 
 const defDataset = {
   dataset: amesDataset,
 };
 
-function datasetReducer(state = defDataset, action){
+function datasetReducer(state = defDataset, action) {
   switch (action.type) {
     case CHANGE_DATASET:
-      switch (action.datasetName){
-        case "ames":
+      switch (action.datasetName) {
+        case 'ames':
           return {...state, dataset: amesDataset};
-        case "kc":
+        case 'kc':
           return {...state, dataset: kcDataset};
         default:
           return {...state, dataset: amesDataset};

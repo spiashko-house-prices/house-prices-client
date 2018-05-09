@@ -1,8 +1,6 @@
 import './BooleanFeature.css';
 import React, {Component} from 'react';
-import {
-  changeFeatureValue,
-} from '../../actions/actions';
+import {changeFeatureValue} from '../../actions/actions';
 import {Checkbox} from 'react-bootstrap';
 import {connect} from 'react-redux';
 
@@ -24,7 +22,9 @@ class BooleanFeature extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFeatureValue: (name, value) => {dispatch(changeFeatureValue(name, value));}
+    changeFeatureValue: (name, value) => {
+      dispatch(changeFeatureValue(name, value));
+    },
   };
 };
 

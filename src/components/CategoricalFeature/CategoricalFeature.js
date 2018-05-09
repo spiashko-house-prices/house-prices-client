@@ -42,7 +42,9 @@ class CategoricalFeature extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeFeatureValue: (name, value) => {dispatch(changeFeatureValue(name, value));}
+    changeFeatureValue: (name, value) => {
+      dispatch(changeFeatureValue(name, value));
+    },
   };
 };
 

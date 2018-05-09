@@ -7,7 +7,8 @@ class CategoricalFeatureList extends Component {
   render() {
     const features = this.props.features;
     const listItems = features.map((feature) =>
-        <ListGroupItem className="CategoricalFeatureList-item" key={feature.featureName}>
+        <ListGroupItem className="CategoricalFeatureList-item"
+                       key={feature.featureName}>
           <CategoricalFeature feature={feature}/>
         </ListGroupItem>,
     );
