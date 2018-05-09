@@ -1,8 +1,8 @@
 import './NumericalFeature.css';
 import React, {Component} from 'react';
-import {store} from '../../index';
 import {changeFeatureValue} from '../../actions/actions';
 import {Col, ControlLabel, FormControl, FormGroup, Row} from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 class NumericalFeature extends Component {
   render() {
@@ -33,10 +33,10 @@ class NumericalFeature extends Component {
                         this.inputNumber.value = min;
                       }
                       else {
-                        store.dispatch(
+                        this.props.
                             changeFeatureValue(
                                 featureName,
-                                parseFloat(this.inputNumber.value)));
+                                parseFloat(this.inputNumber.value));
                       }
                     }
                     else {
@@ -53,4 +53,13 @@ class NumericalFeature extends Component {
   }
 }
 
-export default NumericalFeature;
+const mapDispatchToProps = dispatch => {
+  return {
+    changeFeatureValue: (name, value) => {dispatch(changeFeatureValue(name, value));}
+  };
+};
+
+export default NumericalFeature = connect(
+    null,
+    mapDispatchToProps,
+)(NumericalFeature);

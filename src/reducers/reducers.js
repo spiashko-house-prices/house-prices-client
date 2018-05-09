@@ -1,14 +1,44 @@
 import {combineReducers} from 'redux';
 import {
+  CHANGE_DATASET,
   CHANGE_FEATURE_VALUE,
   LOAD_PREDICTION,
   MODEL_LOADED,
   MODEL_LOADING,
 } from '../actions/actions';
 
+
+const amesDataset = {
+  backend: process.env.REACT_APP_AMES_BACKEND
+};
+
+const kcDataset = {
+  backend: process.env.REACT_APP_KC_BACKEND
+};
+
+const defDataset = {
+  dataset: amesDataset,
+};
+
+function datasetReducer(state = defDataset, action){
+  switch (action.type) {
+    case CHANGE_DATASET:
+      switch (action.datasetName){
+        case "ames":
+          return {...state, dataset: amesDataset};
+        case "kc":
+          return {...state, dataset: kcDataset};
+        default:
+          return {...state, dataset: amesDataset};
+      }
+    default:
+      return state;
+  }
+}
+
 const defLoadState = {
   model: {},
-  status: 'empty',
+  status: 'loading',
 };
 
 function loadReducer(state = defLoadState, action) {
@@ -76,6 +106,11 @@ const defLoadPredictionState = {
 
 function loadPredictionReducer(state = defLoadPredictionState, action) {
   switch (action.type) {
+    case MODEL_LOADED:
+      return {
+        ...state,
+        prediction: null,
+      };
     case LOAD_PREDICTION:
       return {
         ...state,
@@ -87,6 +122,7 @@ function loadPredictionReducer(state = defLoadPredictionState, action) {
 }
 
 const housePricesClientApp = combineReducers({
+  datasetReducer,
   loadReducer,
   formReducer,
   loadPredictionReducer,

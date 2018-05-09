@@ -1,8 +1,10 @@
 import './BooleanFeature.css';
 import React, {Component} from 'react';
-import {store} from '../../index';
-import {changeFeatureValue} from '../../actions/actions';
+import {
+  changeFeatureValue,
+} from '../../actions/actions';
 import {Checkbox} from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 class BooleanFeature extends Component {
   render() {
@@ -12,12 +14,21 @@ class BooleanFeature extends Component {
         <Checkbox
             className="BooleanFeature-label"
             onChange={(e) =>
-                store.dispatch(changeFeatureValue(
-                    featureName, e.target.checked))}>
+                this.props.changeFeatureValue(
+                    featureName, e.target.checked)}>
           {featureName}
         </Checkbox>
     );
   }
 }
 
-export default BooleanFeature;
+const mapDispatchToProps = dispatch => {
+  return {
+    changeFeatureValue: (name, value) => {dispatch(changeFeatureValue(name, value));}
+  };
+};
+
+export default BooleanFeature = connect(
+    null,
+    mapDispatchToProps,
+)(BooleanFeature);

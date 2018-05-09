@@ -1,8 +1,8 @@
 import './CategoricalFeature.css';
 import React, {Component} from 'react';
-import {store} from '../../index';
 import {changeFeatureValue} from '../../actions/actions';
 import {Col, ControlLabel, FormControl, FormGroup, Row} from 'react-bootstrap';
+import {connect} from 'react-redux';
 
 class CategoricalFeature extends Component {
   render() {
@@ -29,8 +29,8 @@ class CategoricalFeature extends Component {
                   componentClass="select"
                   defaultValue={values[0]}
                   onChange={(e) =>
-                      store.dispatch(
-                          changeFeatureValue(featureName, e.target.value))}>
+                      this.props.
+                          changeFeatureValue(featureName, e.target.value)}>
                 {listOptions}
               </FormControl>
             </Col>
@@ -40,4 +40,13 @@ class CategoricalFeature extends Component {
   }
 }
 
-export default CategoricalFeature;
+const mapDispatchToProps = dispatch => {
+  return {
+    changeFeatureValue: (name, value) => {dispatch(changeFeatureValue(name, value));}
+  };
+};
+
+export default CategoricalFeature = connect(
+    null,
+    mapDispatchToProps,
+)(CategoricalFeature);
